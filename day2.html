@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <source src="script.js" type="script">
+</head>
+<body>
+    <div class="main-container">
+        <h1>Translator App</h1>
+        <h2>add input here</h2>
+         <input type="text" class="text-input"/>
+         <button id="enter-button">Enter</button>
+         <h2>Translated text</h2>
+         <p class="output-area"></p>
+
+    </div> 
+    <script>
+        va
+    var outputArea=document.querySelector(".output-area");
+    var textInput=document.querySelector(".text-input");
+    console.log("hello");
+    var enterButton=document.getElementById("enter-button");
+    function getTranslationURL(text){
+        return serverUrl + "?" + "text=" + text ;
+    }
+    function clickHandler(){
+        var inputValue= textInput.value;
+        fetch(getTranslationURL(inputValue))
+        .then(response=>response.json())
+        .then(json=>{
+            var translatedText=json.contents.translated
+        
+            outputArea.innerText = translatedText;
+        })
+    }
+    enterButton.addEventListener("click",clickHandler)
+
+
+    var serverUrl="https://api.funtranslations.com/translate/shakespeare.json";
+</script>
+   
+    
+</body>
+
+</html>
